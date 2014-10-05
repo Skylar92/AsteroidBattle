@@ -9,7 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.width = 800;
         config.height = 600;
-        config.title = "Fuck the asteroids!";
+        config.title = "Asteroids Battle";
         config.resizable = false;
         new LwjglApplication(MyGdxGame.getInstance(), config);
     }

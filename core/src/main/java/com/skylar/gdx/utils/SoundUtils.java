@@ -20,9 +20,9 @@ public class SoundUtils {
     private static final float VOLUME = 0.05f;
 
     private static enum Sounds {
-        BACKGROUND_MUSIC("music/backendMusic (online-audio-converter.com).mp3"),
+        BACKGROUND_MUSIC("music/backend.mp3"),
         SHOOT_MUSIC("music/blaster_shoot.mp3"),
-        EXPLOSION_MUSIC("music/explosion (online-audio-converter.com).mp3");
+        EXPLOSION_MUSIC("music/explosion.mp3");
 
         private String path;
 
