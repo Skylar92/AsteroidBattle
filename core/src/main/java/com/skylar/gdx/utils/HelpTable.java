@@ -12,7 +12,10 @@ public class HelpTable {
 
     private static BitmapFont font;
     private static HelpTable instance;
+
     private static final long FREQUENCY_SHOW_HELP = 10000;
+    private static final String PRESS_HELP = "Press 'SPACE' to shoot";
+
     private static long lastShow;
 
     private HelpTable() {
@@ -28,8 +31,7 @@ public class HelpTable {
 
     public void printHelpToShoot(Batch batch) {
         if(!needShow()) return;
-        String text = "Press 'SPACE' to shoot";
-        font.draw(batch, text, Gdx.graphics.getWidth() - (text.length() * 7), text.length());
+        font.draw(batch, PRESS_HELP, Gdx.graphics.getWidth() - (PRESS_HELP.length() * 7), PRESS_HELP.length());
         font.setColor(Color.GREEN);
     }
 

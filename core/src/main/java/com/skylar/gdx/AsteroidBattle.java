@@ -16,7 +16,6 @@ public class AsteroidBattle extends Game {
 
     private Controller controller;
     private SpriteBatch batch;
-    private boolean needPrintResult = true;
 
     private AsteroidBattle() {}
 
@@ -29,7 +28,6 @@ public class AsteroidBattle extends Game {
         controller = new ControllerGame();
         controller.initialize();
         batch = new SpriteBatch();
-        SoundUtils.setNeedMusic(false);
         SoundUtils.playBackendSound();
         PlayerAchievements.startGame();
     }
@@ -39,30 +37,32 @@ public class AsteroidBattle extends Game {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         controller.loopGameLogic();
         if (!controller.isGameOver()) {
-            batch.begin();
-            controller.drawBackground(batch);
-            controller.drawBullets(batch);
-            controller.drawStarShip(batch);
-            controller.drawAsteroids(batch);
-            HelpTable.getInstance().printHelpToShoot(batch);
-            HelpTable.getInstance().printScore(batch);
-            batch.end();
+            drawGame();
         } else {
-            if(needPrintResult) printPlayerResult();
-            SoundUtils.stopBackendSound();
-            batch.begin();
-            controller.drawBackground(batch);
-            controller.drawStarShip(batch);
-            controller.drawAsteroids(batch);
-            controller.gameOver(batch);
-            controller.drawGameOver(batch);
-            batch.end();
+            drawGameOver();
         }
     }
 
-    private void printPlayerResult() {
-        needPrintResult = false;
-        PlayerAchievements.endGame();
+    private void drawGame() {
+        batch.begin();
+        controller.drawBackground(batch);
+        controller.drawBullets(batch);
+        controller.drawStarShip(batch);
+        controller.drawAsteroids(batch);
+        HelpTable.getInstance().printHelpToShoot(batch);
+        HelpTable.getInstance().printScore(batch);
+        batch.end();
+    }
+
+    private void drawGameOver() {
+        SoundUtils.stopBackendSound();
+        batch.begin();
+        controller.drawBackground(batch);
+        controller.drawStarShip(batch);
+        controller.drawAsteroids(batch);
+        controller.gameOver(batch);
+        controller.drawGameOver(batch);
+        batch.end();
     }
 
 }
