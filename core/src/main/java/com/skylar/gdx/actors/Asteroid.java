@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.skylar.gdx.utils.AsteroidUtils;
 import com.skylar.gdx.utils.FileLoaderUtils;
 import com.skylar.gdx.utils.SoundUtils;
 
@@ -101,6 +102,9 @@ public class Asteroid extends Actor {
             SoundUtils.explosion();
             this.alive = false;
             this.timeExplosion = System.currentTimeMillis();
+        } else {
+            TextureRegion asteroidTexture = AsteroidUtils.loadTextureAfterShoot(heal_point);
+            setTexture(asteroidTexture);
         }
     }
 

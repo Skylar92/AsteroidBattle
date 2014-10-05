@@ -13,7 +13,10 @@ public class FileLoaderUtils {
 
         BACKGROUND("image/background_cosmos.jpg"),
         PLAYER("image/starship.png"),
-        ASTEROID("image/asteroid.png"),
+        ASTEROID("image/asteroid/asteroid.png"),
+        ASTEROID_HP_1("image/asteroid/asteroid_1.png"),
+        ASTEROID_HP_2("image/asteroid/asteroid_2.png"),
+        ASTEROID_HP_3("image/asteroid/asteroid_3.png"),
         EXPLOSION("image/explosion.png"),
         GAME_OVER("image/game_over.png"),
         BULLET("image/bullet.png");
@@ -28,7 +31,7 @@ public class FileLoaderUtils {
     private FileLoaderUtils() {}
 
     public static Texture loadTexture(TextureID textureID) {
-        String path = FileDeveloperUtils.PATH_HOME + textureID.path;
+        String path = textureID.path;
         FileHandle internal = Gdx.files.internal(path);
         return new Texture(internal);
     }

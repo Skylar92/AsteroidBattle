@@ -3,7 +3,6 @@ package com.skylar.gdx;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.skylar.gdx.controller.Controller;
 import com.skylar.gdx.controller.ControllerGame;
@@ -11,17 +10,17 @@ import com.skylar.gdx.utils.HelpTable;
 import com.skylar.gdx.utils.PlayerAchievements;
 import com.skylar.gdx.utils.SoundUtils;
 
-public class MyGdxGame extends Game {
+public class AsteroidBattle extends Game {
 
-    private static final MyGdxGame GDX_GAME = new MyGdxGame();
+    private static final AsteroidBattle GDX_GAME = new AsteroidBattle();
 
     private Controller controller;
     private SpriteBatch batch;
     private boolean needPrintResult = true;
 
-    private MyGdxGame() {}
+    private AsteroidBattle() {}
 
-    public static MyGdxGame getInstance() {
+    public static AsteroidBattle getInstance() {
         return GDX_GAME;
     }
 
