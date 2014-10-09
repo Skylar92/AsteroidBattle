@@ -9,8 +9,13 @@ public class PlayerAchievements {
 
     private static int scorePlayer;
     private static long timeGame;
+    private static boolean isGameNow = false;
 
     private PlayerAchievements() {}
+
+    public static void resetPoint() {
+        scorePlayer = 0;
+    }
 
     public static void destroyAsteroid(Asteroid asteroid) {
         int max_heal_point = asteroid.getMax_heal_point();
@@ -18,11 +23,15 @@ public class PlayerAchievements {
     }
 
     public static void startGame() {
+        isGameNow = true;
         timeGame = System.currentTimeMillis();
     }
 
     public static void endGame() {
-        timeGame = System.currentTimeMillis() - timeGame;
+        if(isGameNow) {
+            timeGame = System.currentTimeMillis() - timeGame;
+            isGameNow = false;
+        }
     }
 
     public static int getScorePlayer() {

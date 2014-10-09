@@ -4,6 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Skylar
  */
@@ -19,7 +22,12 @@ public class FileLoaderUtils {
         ASTEROID_HP_3("image/asteroid/asteroid_3.png"),
         EXPLOSION("image/explosion.png"),
         GAME_OVER("image/game_over.png"),
-        BULLET("image/bullet.png");
+        BULLET("image/bullet.png"),
+        BUTTON_EXIT_GAME_RED("image/main_menu/button_exit_game_red.png"),
+        BUTTON_EXIT_GAME_GREEN("image/main_menu/button_exit_game_green.png"),
+        BUTTON_START_GAME_BLUE("image/main_menu/button_start_game_blue.png"),
+        BUTTON_START_GAME_GREEN("image/main_menu/button_start_game_green.png"),
+        BACKGROUND_MENU("image/main_menu/background_menu.jpg");
 
         String path;
 
@@ -28,12 +36,18 @@ public class FileLoaderUtils {
         }
     }
 
+    private static final Map<TextureID, Texture> TEXTURE_MAP = new HashMap<TextureID, Texture>();
+
     private FileLoaderUtils() {}
 
     public static Texture loadTexture(TextureID textureID) {
+        if(TEXTURE_MAP.containsKey(textureID))
+            return TEXTURE_MAP.get(textureID);
         String path = textureID.path;
         FileHandle internal = Gdx.files.internal(path);
-        return new Texture(internal);
+        Texture texture = new Texture(internal);
+        TEXTURE_MAP.put(textureID, texture);
+        return texture;
     }
 
 

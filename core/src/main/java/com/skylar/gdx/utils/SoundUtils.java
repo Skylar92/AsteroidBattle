@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 /**
  * @author Skylar
@@ -58,12 +59,11 @@ public class SoundUtils {
         if(explosion == null) {
             explosion = Gdx.audio.newSound(load(Sounds.EXPLOSION_MUSIC));
         }
-
         explosion.play(VOLUME);
     }
 
     private static FileHandle load(Sounds sound) {
-        String pathToSound = FileDeveloperUtils.PATH_HOME + sound.path;
+        String pathToSound = sound.path;
         return Gdx.files.internal(pathToSound);
     }
 
