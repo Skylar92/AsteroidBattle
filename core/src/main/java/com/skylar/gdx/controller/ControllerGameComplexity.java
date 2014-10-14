@@ -18,7 +18,7 @@ public class ControllerGameComplexity {
     private ControllerAsteroid controllerAsteroid;
     private ControllerPlayer controllerPlayer;
 
-    private static final long FREQENCY_COMPLEXITY_GAME = 60000;
+    private static final long FREQENCY_COMPLEXITY_GAME = 20000;
     private static long timeGame;
 
     public ControllerGameComplexity(ControllerAsteroid controllerAsteroid, ControllerPlayer controllerPlayer) {

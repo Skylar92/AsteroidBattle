@@ -1,12 +1,21 @@
 package com.skylar.gdx.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.skylar.gdx.actors.menu.ExitGameButton;
 import com.skylar.gdx.actors.menu.StartGameButton;
 import com.skylar.gdx.utils.FileLoaderUtils;
+import com.skylar.gdx.utils.HelpTable;
+import com.skylar.gdx.utils.SoundUtils;
+
+import static com.badlogic.gdx.Gdx.*;
 
 /**
  * Created by Skylar
@@ -27,20 +36,16 @@ public class AsteroidBattleMenu implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+        gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         exitGameButton.checkCursorSelected();
         startGameButton.checkCursorSelected();
         game.batch.begin();
         game.batch.draw(background, 0, 0);
-        startGameButton.draw(game.batch, Gdx.graphics.getDeltaTime());
-        exitGameButton.draw(game.batch, Gdx.graphics.getDeltaTime());
+        startGameButton.draw(game.batch, graphics.getDeltaTime());
+        exitGameButton.draw(game.batch, graphics.getDeltaTime());
         game.batch.end();
-        if(exitGameButton.isClicked()) exit();
+        if(exitGameButton.isClicked()) dispose();
         if(startGameButton.isClicked()) game();
-    }
-
-    private void exit() {
-        System.exit(-1);
     }
 
     private void game() {
@@ -63,5 +68,11 @@ public class AsteroidBattleMenu implements Screen {
     public void resume() {}
 
     @Override
-    public void dispose() {}
+    public void dispose() {
+        game.dispose();
+        SoundUtils.dispose();
+        HelpTable.getInstance().dispose();
+        FileLoaderUtils.dispose();
+        System.exit(0);
+    }
 }

@@ -12,6 +12,8 @@ public class DesktopLauncher {
         config.height = 600;
         config.title = "Asteroids Battle";
         config.resizable = false;
+        config.fullscreen = false;
+        config.vSyncEnabled = false;
         new LwjglApplication(new AsteroidBattle(), config);
     }
 }

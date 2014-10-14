@@ -1,7 +1,9 @@
 package com.skylar.gdx.controller;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.skylar.gdx.actors.Asteroid;
 import com.skylar.gdx.actors.Bullet;
 import com.skylar.gdx.actors.Player;

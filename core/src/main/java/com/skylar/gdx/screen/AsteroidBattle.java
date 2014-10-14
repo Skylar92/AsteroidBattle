@@ -4,6 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.skylar.gdx.controller.Controller;
 import com.skylar.gdx.controller.ControllerGame;
+import com.skylar.gdx.utils.HelpTable;
+import com.skylar.gdx.utils.SoundUtils;
 
 /**
  * Created by Skylar
@@ -30,6 +32,7 @@ public class AsteroidBattle extends Game {
 
     @Override
     public void dispose() {
+//        super.dispose();
         batch.dispose();
     }
 

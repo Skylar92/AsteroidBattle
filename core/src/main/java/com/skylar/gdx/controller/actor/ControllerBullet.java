@@ -16,7 +16,7 @@ import static com.badlogic.gdx.Gdx.input;
  */
 public class ControllerBullet {
 
-    private static final long FREQUENCY_BULLET = 500;
+    private static final long FREQUENCY_BULLET = 200;
     private static final float STEP = 13.0f;
     private long timePassed;
 
@@ -46,7 +46,7 @@ public class ControllerBullet {
     }
 
     private void checkOnCreateBullet(Player player, List<Bullet> bullets) {
-        if(input.isKeyPressed(Input.Keys.SPACE)) {
+        if(input.isKeyPressed(Input.Keys.SPACE) && player.isAlive()) {
             if(canCreateBullet()) {
                 SoundUtils.shootBluster();
                 bullets.add(new Bullet(player));

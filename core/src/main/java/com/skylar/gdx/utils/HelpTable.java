@@ -1,9 +1,14 @@
 package com.skylar.gdx.utils;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+import static com.skylar.gdx.utils.FileLoaderUtils.*;
 
 /**
  * @author Skylar
@@ -20,7 +25,7 @@ public class HelpTable {
 
     private HelpTable() {
         lastShow = System.currentTimeMillis();
-        font = new BitmapFont();
+        HelpTable.font = new BitmapFont(loadFile(FileID.FONT), new TextureRegion(loadTexture(TextureID.FONT)), false);
     }
 
     public static HelpTable getInstance() {
@@ -31,7 +36,7 @@ public class HelpTable {
 
     public void printHelpToShoot(Batch batch) {
         if(!needShow()) return;
-        font.draw(batch, PRESS_HELP, Gdx.graphics.getWidth() - (PRESS_HELP.length() * 7), PRESS_HELP.length());
+        font.draw(batch, PRESS_HELP, Gdx.graphics.getWidth() - (PRESS_HELP.length() * 18), 40);
         font.setColor(Color.GREEN);
     }
 
@@ -42,9 +47,12 @@ public class HelpTable {
     }
 
     public void printScore(Batch batch) {
-        font.draw(batch, "Score: " + PlayerAchievements.getScorePlayer(), 20, 20);
+        font.draw(batch, "Score: " + PlayerAchievements.getScorePlayer(), 20, 40);
         font.setColor(Color.GREEN);
     }
 
+    public void dispose() {
+        font.dispose();
+    }
 
 }

@@ -34,7 +34,8 @@ public class SoundUtils {
 
     public static void playBackendSound() {
         if(!needMusic) return;
-        music = Gdx.audio.newMusic(load(Sounds.BACKGROUND_MUSIC));
+        if(music == null)
+            music = Gdx.audio.newMusic(load(Sounds.BACKGROUND_MUSIC));
         music.play();
         music.setVolume(VOLUME);
         music.setLooping(true);
@@ -59,7 +60,8 @@ public class SoundUtils {
         if(explosion == null) {
             explosion = Gdx.audio.newSound(load(Sounds.EXPLOSION_MUSIC));
         }
-        explosion.play(VOLUME);
+        long play = explosion.play(VOLUME);
+        explosion.setPitch(play, -4.0f);
     }
 
     private static FileHandle load(Sounds sound) {
@@ -69,5 +71,11 @@ public class SoundUtils {
 
     public static void setNeedMusic(boolean needMusic) {
         SoundUtils.needMusic = needMusic;
+    }
+
+    public static void dispose() {
+        if(music != null) music.dispose();
+        if(explosion != null) explosion.dispose();
+        if(blasterShoot!= null) blasterShoot.dispose();
     }
 }
