@@ -38,7 +38,7 @@ public class DatabaseManager implements DatabaseManagerI {
     private final String PATH_DB;
 
     public DatabaseManager() {
-        this.PATH_DB = LOCAL_SQL_DB + Gdx.files.getExternalStoragePath() + NAME_DB;
+        this.PATH_DB = LOCAL_SQL_DB + Gdx.files.getLocalStoragePath() + NAME_DB;
     }
 
     @Override
