@@ -67,7 +67,7 @@ public class FileLoaderUtils {
         if(FILE_HANDLE_MAP.containsKey(fileID)) {
             return FILE_HANDLE_MAP.get(fileID);
         }
-        FileHandle file = Gdx.files.external(fileID.path);
+        FileHandle file = Gdx.files.internal(fileID.path);
         FILE_HANDLE_MAP.put(fileID, file);
         return file;
     }
