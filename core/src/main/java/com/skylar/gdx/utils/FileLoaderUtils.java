@@ -76,7 +76,6 @@ public class FileLoaderUtils {
         for (TextureID textureID : TEXTURE_MAP.keySet()) {
             Texture texture = TEXTURE_MAP.get(textureID);
             texture.dispose();
-            TEXTURE_MAP.remove(textureID);
         }
     }
 
